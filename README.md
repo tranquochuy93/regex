@@ -28,3 +28,15 @@ let matchs = text.match(/BLA(?:(?!BLA|LOOK)[\s\S])*LOOK/g); // [BLA text text te
 - Positive lookbehind: (?<=Y)X, matches X, but only if there’s Y before it.
 - Negative lookbehind: (?<!Y)X, matches X, but only if there’s no Y before it.
 # ?: none group capture????????????
+
+#### get last strings
+```js
+let string = '俺のフレンチ・イタリアンなどの本格一流料理を冷凍商品化しご自宅へお届け【俺のEC】(21-0119)　(s00000021625001)';
+console.log(string.match(/\([^)]*\)\s\([^)]*\)$/)); // ["(21-0119)　(s00000021625001)"]
+```
+#### get last string without patheneses
+```js
+(?<=\s\().*(?=\)) // (s00000021625001)
+```
+
+

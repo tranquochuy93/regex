@@ -36,10 +36,11 @@ console.log(string.match(/\([^)]*\)\s\([^)]*\)$/)); // ["(21-0119)　(s000000216
 ```
 #### get last string without patheneses
 ```js
-(?<=\s\().*(?=\)) // (s00000021625001)
+let str = "格安SIM/スマホ【BIGLOBEモバイル】（08-0207）(s00000000040003) asjdalkjlksdfj skldfjslkdfj slkdfjsd";
+console.log(str.match(/(?<=（|\()[^)）]*(?=）|\))(?!.*\(|（)/));//["s00000000040003"]
 ```
 
-#### check number
+#### check number(negative and positive number)
 ```js
 /^\-?[0-9]+$/
 ```

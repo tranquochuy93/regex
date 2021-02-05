@@ -34,10 +34,14 @@ let matchs = text.match(/BLA(?:(?!BLA|LOOK)[\s\S])*LOOK/g); // [BLA text text te
 let string = '俺のフレンチ・イタリアンなどの本格一流料理を冷凍商品化しご自宅へお届け【俺のEC】(21-0119)　(s00000021625001)';
 console.log(string.match(/\([^)]*\)\s\([^)]*\)$/)); // ["(21-0119)　(s00000021625001)"]
 ```
-#### get last string without patheneses
+#### get last string
 ```js
+// (?!.*\(|（)/))
 let str = "格安SIM/スマホ【BIGLOBEモバイル】（08-0207）(s00000000040003) asjdalkjlksdfj skldfjslkdfj slkdfjsd";
 console.log(str.match(/(?<=（|\()[^)）]*(?=）|\))(?!.*\(|（)/));//["s00000000040003"]
+
+let str = "{{token1}}/{{token2}} abc";
+console.log(str.match(/{+[^}]*}*(?!.*{)/));// {{token2}}
 ```
 
 #### check number(negative and positive number)

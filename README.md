@@ -16,6 +16,7 @@ let matchs = text.match(/BLA.*?LOOK/g); // [BLA text text text  text text text B
 // greedy
 matchs = text.match(/BLA.*LOOK/g); // [BLA text text text  text text text BLA text text text text LOOK LOOK]
 ```
+### Look ahead and look behind
 #### closest match
 ```js
 let text = 'BLA text text text  text text text BLA text text text text LOOK LOOK text text text BLA text text BLA';
@@ -27,7 +28,6 @@ let matchs = text.match(/BLA(?:(?!BLA|LOOK)[\s\S])*LOOK/g); // [BLA text text te
 - Negative lookahead: X(?!Y), it means "search X, but only if not followed by Y"
 - Positive lookbehind: (?<=Y)X, matches X, but only if there’s Y before it.
 - Negative lookbehind: (?<!Y)X, matches X, but only if there’s no Y before it.
-# ?: none group capture????????????
 
 #### get last strings
 ```js
@@ -48,3 +48,16 @@ console.log(str.match(/{+[^}]*}*(?!.*{)/));// {{token2}}
 ```js
 /^\-?[0-9]+$/
 ```
+### back reference
+"madhur".replace(/(madhur)?/, "$1 ahuja");   // returns "madhur ahuja"
+
+### capturing group and non-catureing group
+| capturing group | non-catureing group |
+| --------------- | ------------------- |
+|                 | ?: prefix 
+|                 | better performance and un-cluttering of back references
+|the characters in the capturing group will be stored in the backreference $1 | $1 will be empty
+| "madhur".replace(/(madhur)?/, "$1 ahuja");   // returns "madhur ahuja" | "madhur".replace(/(?:madhur)?/, "$1 ahuja"); // returns "$1 ahuja"
+| /(mad)hur/.exec("madhur");   // returns an array ["madhur", "mad"] | /(?:mad)hur/.exec("madhur"); // returns an array ["madhur"]
+
+

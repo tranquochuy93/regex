@@ -60,4 +60,16 @@ console.log(str.match(/{+[^}]*}*(?!.*{)/));// {{token2}}
 | "madhur".replace(/(madhur)?/, "$1 ahuja");   // returns "madhur ahuja" | "madhur".replace(/(?:madhur)?/, "$1 ahuja"); // returns "$1 ahuja"
 | /(mad)hur/.exec("madhur");   // returns an array ["madhur", "mad"] | /(?:mad)hur/.exec("madhur"); // returns an array ["madhur"]
 
+### iterative sequence character
+```js
+function lineEncoding(s) {
+  let rs = s.replace(/(.)\1+/g, chars => chars.length + chars[0]);
+    return rs
+}
+lineEncoding('aaabbccdaa');// 3a2b2cd2a
 
+let array = 'aaabbccdaa'.match(/(.)\1+/g);
+console.log(array);// [ 'aaa', 'bb', 'cc', 'aa' ]
+```
+- \1 - it means the first capturing group in the matched expression. \n would be the nth capturing group. (Note that \0 would be whole match). In many engines, the upperlimit for n is 9, but some support up to 99 as well.
+- When used in regex like (a|b)\1, it means that after a or b, the next character should be the first captured group, which is a or b so the regex here would match aa or bb.

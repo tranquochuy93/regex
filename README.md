@@ -73,3 +73,9 @@ console.log(array);// [ 'aaa', 'bb', 'cc', 'aa' ]
 ```
 - \1 - it means the first capturing group in the matched expression. \n would be the nth capturing group. (Note that \0 would be whole match). In many engines, the upperlimit for n is 9, but some support up to 99 as well.
 - When used in regex like (a|b)\1, it means that after a or b, the next character should be the first captured group, which is a or b so the regex here would match aa or bb.
+
+
+### match U.* except UIS0101
+```js
+U(?!IS0101).*|UIS0101.+
+```
